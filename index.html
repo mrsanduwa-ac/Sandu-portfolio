@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DesignVerse - Sandusha Avishkha | Professional Graphic Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS Variables for Light Mode (Default) */
+        :root {
+            --bg-page: #F7FAFC; /* Light Gray (near white) */
+            --bg-header: #FFFFFF;
+            --bg-card: #FFFFFF;
+            --bg-section-alt: #F1F5F9; /* A slightly darker light gray for alternating sections */
+            --text-main: #1A202C; /* Dark Charcoal (near black) */
+            --text-secondary: #4A5568; /* A darker gray for secondary text */
+            --primary-color: #2563EB; /* Strong Blue */
+            --accent-color: #60A5FA; /* Lighter Blue accent */
+            --border-color: #E2E8F0; /* Light border */
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --shadow-lg-color: rgba(0, 0, 0, 0.15);
+            --hero-gradient-from: #2563EB;
+            --hero-gradient-to: #1E40AF; /* Darker blue */
+            --hero-text-accent: #BFDBFE; /* Very light blue for accent in hero */
+            --footer-bg: #1A202C; /* Dark footer */
+            --footer-text: #F7FAFC;
+
+            /* New variables for secondary button (Download CV) */
+            --bg-button-secondary: #E2E8F0; /* Light gray for light mode */
+            --text-button-secondary: var(--primary-color); /* Primary blue text for light mode */
+        }
+
+        /* CSS Variables for Dark Mode */
+        body.dark-mode {
+            --bg-page: #1A202C; /* Very dark background */
+            --bg-header: #2D3748; /* Darker header */
+            --bg-card: #2D3748; /* Slightly lighter dark for cards */
+            --bg-section-alt: #1A202C; /* Same as page background for consistency in dark mode */
+            --text-main: #F7FAFC; /* Light text */
+            --text-secondary: #A0AEC0; /* Lighter gray for secondary text */
+            --primary-color: #60A5FA; /* Primary blue becomes brighter */
+            --accent-color: #90CDF4; /* Accent blue becomes even brighter */
+            --border-color: #4A5568; /* Darker border */
+            --shadow-color: rgba(0, 0, 0, 0.5); /* More subtle shadow */
+            --shadow-lg-color: rgba(0, 0, 0, 0.3);
+            --hero-gradient-from: #1A202C; /* Darker gradient start */
+            --hero-gradient-to: #2D3748; /* Darker gradient end */
+            --hero-text-accent: #60A5FA; /* Brighter accent for dark hero */
+            --footer-bg: #000000; /* Even darker footer */
+            --footer-text: #E2E8F0;
+
+            /* Dark mode values for secondary button */
+            --bg-button-secondary: #4A5568; /* Darker gray for dark mode */
+            --text-button-secondary: var(--text-main); /* Light text for dark mode */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        /* Apply variables to Tailwind-like classes */
+        .bg-var-primary { background-color: var(--primary-color); }
+        .text-var-primary { color: var(--primary-color); }
+        .border-var-primary { border-color: var(--primary-color); }
+        .bg-var-accent { background-color: var(--accent-color); }
+        .text-var-accent { color: var(--accent-color); }
+        .border-var-accent { border-color: var(--accent-color); }
+        .bg-var-header { background-color: var(--bg-header); }
+        .bg-var-card { background-color: var(--bg-card); }
+        .bg-var-section-alt { background-color: var(--bg-section-alt); }
+        .text-var-main { color: var(--text-main); }
+        .text-var-secondary { color: var(--text-secondary); }
+        .border-var-card { border-color: var(--border-color); }
+        .shadow-var { box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -1px var(--shadow-color); }
+        .shadow-lg-var { box-shadow: 0 10px 15px -3px var(--shadow-lg-color), 0 4px 6px -2px var(--shadow-lg-color); }
+        .shadow-xl-var { box-shadow: 0 20px 25px -5px var(--shadow-lg-color), 0 10px 10px -5px var(--shadow-lg-color); }
+        .bg-gradient-hero {
+            background-image: linear-gradient(to right, var(--hero-gradient-from), var(--hero-gradient-to));
+        }
+        .text-hero-accent { color: var(--hero-text-accent); }
+        .bg-var-footer { background-color: var(--footer-bg); }
+        .text-var-footer { color: var(--footer-text); }
+
+        /* Apply new secondary button variables */
+        .bg-var-button-secondary { background-color: var(--bg-button-secondary); }
+        .text-var-button-secondary { color: var(--text-button-secondary); }
+
+
+        /* Smooth scroll for navigation */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Basic hover effect for buttons */
+        .btn-hover-effect {
+            transition: all 0.3s ease;
+        }
+        .btn-hover-effect:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px var(--shadow-color);
+        }
+
+        /* Project card hover effect */
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--shadow-lg-color);
+        }
+
+        /* Social icon hover effect */
+        .social-icon-hover:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- Custom Animations --- */
+
+        /* Fade In Up */
+        @keyframes fadeInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fadeInFromBottom 0.8s ease-out forwards;
+            opacity: 0; /* Hidden by default */
+        }
+
+        /* Fade In */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0; /* Hidden by default */
+        }
+
+        /* Scale In */
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .animate-scale-in {
+            animation: scaleIn 0.7s ease-out forwards;
+            opacity: 0; /* Hidden by default */
+        }
+
+        /* Fade In Scale */
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .animate-fade-in-scale {
+            animation: fadeInScale 0.9s ease-out forwards;
+            opacity: 0; /* Hidden by default */
+        }
+
+        /* Staggered animation delays (apply with JS or directly if known count) */
+        .animate-delay-100 { animation-delay: 0.1s; }
+        .animate-delay-200 { animation-delay: 0.2s; }
+        .animate-delay-300 { animation-delay: 0.3s; }
+        .animate-delay-400 { animation-delay: 0.4s; }
+        .animate-delay-500 { animation-delay: 0.5s; }
+        .animate-delay-600 { animation-delay: 0.6s; }
+        .animate-delay-700 { animation-delay: 0.7s; }
+        .animate-delay-800 { animation-delay: 0.8s; }
+        .animate-delay-900 { animation-delay: 0.9s; }
+        .animate-delay-1000 { animation-delay: 1.0s; }
+
+
+        /* Initial hidden state for elements that will animate on scroll */
+        .hidden-on-load {
+            opacity: 0;
+            transform: translateY(20px); /* Default for fade-in-up */
+        }
+        .hidden-on-load.animate-fade-in-scale {
+            transform: scale(0.8);
+        }
+        .hidden-on-load.animate-fade-in {
+            transform: none; /* No translation for simple fade-in */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-var-header shadow-md py-4 fixed w-full z-50 rounded-b-xl">
+        <nav class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#hero" class="hover:text-var-accent transition-colors duration-300">
+                <!-- Placeholder for your logo image -->
+                <img id="site-logo" src="Images/logo.png" alt="DesignVerse Logo" class="max-h-10">
+            </a>
+
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="#hero" class="text-var-secondary hover:text-var-primary font-medium transition-colors duration-300">Home</a></li>
+                <li><a href="#about" class="text-var-secondary hover:text-var-primary font-medium transition-colors duration-300">About</a></li>
+                <li><a href="#portfolio" class="text-var-secondary hover:text-var-primary font-medium transition-colors duration-300">Portfolio</a></li>
+                <li><a href="#services" class="text-var-secondary hover:text-var-primary font-medium transition-colors duration-300">Services</a></li>
+                <li><a href="#contact" class="text-var-secondary hover:text-var-primary font-medium transition-colors duration-300">Contact</a></li>
+            </ul>
+
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="your_cv.pdf" download class="bg-var-button-secondary text-var-button-secondary px-6 py-2 rounded-full text-sm font-semibold hover:bg-gray-300 transition-all duration-300 btn-hover-effect shadow-var">
+                    Download CV <i class="fas fa-download ml-2"></i>
+                </a>
+                <a href="#contact" class="bg-var-primary text-white px-6 py-2 rounded-full hover:bg-var-accent transition-all duration-300 btn-hover-effect shadow-var">
+                    Let's Connect
+                </a>
+                <!-- Dark/Light Mode Toggle - Moved to the rightmost position -->
+                <button id="theme-toggle" class="text-var-secondary hover:text-var-primary focus:outline-none transition-colors duration-300">
+                    <i id="light-mode-icon" class="fas fa-sun text-xl" aria-label="Switch to Light Mode"></i>
+                    <i id="dark-mode-icon" class="fas fa-moon text-xl hidden" aria-label="Switch to Dark Mode"></i>
+                </button>
+            </div>
+
+            <button id="mobile-menu-button" class="md:hidden text-var-secondary focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </nav>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-var-header py-4 mt-2 shadow-lg-var rounded-b-xl">
+            <ul class="flex flex-col items-center space-y-4">
+                <li><a href="#hero" class="text-var-secondary hover:text-var-primary font-medium transition-colors duration-300 py-2 block" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Home</a></li>
+                <li><a href="#about" class="text-var-secondary hover:text-var-primary font-medium transition-colors duration-300 py-2 block" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a></li>
+                <li><a href="#portfolio" class="text-var-secondary hover:text-var-primary font-medium transition-colors duration-300 py-2 block" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Portfolio</a></li>
+                <li><a href="#services" class="text-var-secondary hover:text-var-primary font-medium transition-colors duration-300 py-2 block" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Services</a></li>
+                <li><a href="your_cv.pdf" download class="bg-var-button-secondary text-var-button-secondary px-6 py-2 rounded-full text-sm font-semibold hover:bg-gray-300 transition-all duration-300 btn-hover-effect shadow-var mt-4" onclick="document.getElementById('mobile-menu').classList.add('hidden')">
+                    Download CV <i class="fas fa-download ml-2"></i>
+                </a></li>
+                <li><a href="#contact" class="bg-var-primary text-white px-6 py-2 rounded-full hover:bg-var-accent transition-all duration-300 btn-hover-effect shadow-var mt-4" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Let's Connect</a></li>
+                <!-- Dark/Light Mode Toggle for mobile - Moved to the bottom of the mobile menu -->
+                <li>
+                    <button id="mobile-theme-toggle" class="text-var-secondary hover:text-var-primary focus:outline-none transition-colors duration-300 py-2 block">
+                        <i id="mobile-light-mode-icon" class="fas fa-sun text-xl" aria-label="Switch to Light Mode"></i>
+                        <i id="mobile-dark-mode-icon" class="fas fa-moon text-xl hidden" aria-label="Switch to Dark Mode"></i>
+                        <span class="ml-2 font-medium">Toggle Theme</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <section id="hero" class="relative bg-gradient-hero text-white flex items-center justify-center min-h-[calc(100vh-80px)] overflow-hidden rounded-b-3xl shadow-xl-var">
+            <div class="absolute inset-0 z-0 opacity-10">
+                <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+                    <defs>
+                        <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                            <path d="M 10 0 L 0 0 L 0 10" fill="none" stroke="currentColor" stroke-width="0.1"></path>
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#grid)"></rect>
+                </svg>
+            </div>
+            <div class="absolute inset-0 z-0 bg-cover bg-center opacity-80" style="background-image: url('Images/Background.jpg');"></div>
+
+            <div class="container mx-auto px-4 py-20 text-center z-10">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 animate-fade-in-up animate-delay-100">
+                    Crafting Visual Stories. <br class="sm:hidden"> Elevating Brands.
+                </h1>
+                <p class="text-lg sm:text-xl mb-10 max-w-3xl mx-auto opacity-90 animate-fade-in animate-delay-300">
+                    Your Vision, Artfully Designed. By <span class="text-hero-accent font-semibold">Sandusha Avishkha</span>.
+                    <br> Professional Graphic Design services in Sri Lanka and Worldwide.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#portfolio" class="bg-var-accent text-var-primary px-8 py-3 rounded-full text-lg font-semibold hover:bg-white hover:text-var-primary transition-all duration-300 btn-hover-effect shadow-xl-var animate-scale-in animate-delay-500">
+                        View My Portfolio <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-white hover:text-var-primary transition-all duration-300 btn-hover-effect shadow-xl-var animate-scale-in animate-delay-600">
+                        Get a Free Consultation
+                    </a>
+                </div>
+                <div class="mt-12 flex justify-center space-x-6 text-2xl text-white opacity-80 animate-fade-in animate-delay-700">
+                    <i class="fab fa-adobe fa-lg" title="Adobe Photoshop"></i>
+                    <i class="fab fa-adobe fa-lg" title="Adobe Illustrator"></i>
+                    <i class="fas fa-pencil-ruler fa-lg" title="CorelDRAW"></i>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="container mx-auto px-4 py-16 sm:py-24">
+            <h2 class="text-4xl font-bold text-center mb-12 text-var-primary hidden-on-load animate-fade-in-up">About DesignVerse</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="text-center md:text-left">
+                    <div class="w-48 h-48 mx-auto md:mx-0 rounded-full overflow-hidden border-4 border-var-accent shadow-lg-var mb-6 hidden-on-load animate-fade-in-scale">
+                        <img src="Images/yp.jpg" alt="Sandusha Avishkha" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-3xl font-semibold mb-4 text-var-main hidden-on-load animate-fade-in-up animate-delay-100">Meet the Designer Behind DesignVerse</h3>
+                    <p class="text-var-secondary leading-relaxed mb-6 hidden-on-load animate-fade-in-up animate-delay-200">
+                        Hello! I'm Sandusha Avishkha, the creative mind and founder of DesignVerse. With a deep passion for visual communication and a keen eye for detail, I specialize in transforming ideas into compelling graphic designs. My journey in design is driven by the desire to help businesses and individuals make a lasting impression through powerful visuals.
+                    </p>
+                    <p class="text-var-secondary leading-relaxed hidden-on-load animate-fade-in-up animate-delay-300">
+                        Based in Ja-Ela, Western Province, Sri Lanka, DesignVerse offers a wide range of services to clients locally and globally, ensuring every project is crafted with precision and creativity.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-3xl font-semibold mb-4 text-var-main hidden-on-load animate-fade-in-up animate-delay-400">Our Vision: Design with Purpose</h3>
+                    <p class="text-var-secondary leading-relaxed mb-8 hidden-on-load animate-fade-in-up animate-delay-500">
+                        At DesignVerse, we believe that great design is more than just aesthetics—it's about effective communication, strategic thinking, and delivering tangible results. We work closely with our clients to understand their unique needs, ensuring every design not only looks good but also serves its intended purpose and resonates with the target audience.
+                    </p>
+
+                    <h3 class="text-2xl font-semibold mb-4 text-var-main hidden-on-load animate-fade-in-up animate-delay-600">My Expertise & Tools</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                        <div class="flex items-center space-x-3 bg-var-card p-4 rounded-xl shadow-var border border-var-card hidden-on-load animate-fade-in-up animate-delay-700">
+                            <i class="fas fa-brush text-var-primary text-xl"></i>
+                            <span class="font-medium text-var-secondary">Brand Identity</span>
+                        </div>
+                        <div class="flex items-center space-x-3 bg-var-card p-4 rounded-xl shadow-var border border-var-card hidden-on-load animate-fade-in-up animate-delay-800">
+                            <i class="fas fa-print text-var-primary text-xl"></i>
+                            <span class="font-medium text-var-secondary">Print Design</span>
+                        </div>
+                        <div class="flex items-center space-x-3 bg-var-card p-4 rounded-xl shadow-var border border-var-card hidden-on-load animate-fade-in-up animate-delay-900">
+                            <i class="fas fa-desktop text-var-primary text-xl"></i>
+                            <span class="font-medium text-var-secondary">Digital Graphics</span>
+                        </div>
+                        <div class="flex items-center space-x-3 bg-var-card p-4 rounded-xl shadow-var border border-var-card hidden-on-load animate-fade-in-up animate-delay-1000">
+                            <i class="fab fa-adobe text-var-primary text-xl"></i>
+                            <span class="font-medium text-var-secondary">Photoshop</span>
+                        </div>
+                        <div class="flex items-center space-x-3 bg-var-card p-4 rounded-xl shadow-var border border-var-card hidden-on-load animate-fade-in-up animate-delay-1100">
+                            <i class="fab fa-adobe text-var-primary text-xl"></i>
+                            <span class="font-medium text-var-secondary">Illustrator</span>
+                        </div>
+                        <div class="flex items-center space-x-3 bg-var-card p-4 rounded-xl shadow-var border border-var-card hidden-on-load animate-fade-in-up animate-delay-1200">
+                            <i class="fas fa-bezier-curve text-var-primary text-xl"></i> <span class="font-medium text-var-secondary">CorelDRAW</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-20">
+                <h3 class="text-3xl font-semibold text-center mb-8 text-var-main hidden-on-load animate-fade-in-up">What My Clients Say</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-var-card p-8 rounded-xl shadow-lg-var border border-var-card hidden-on-load animate-fade-in-up animate-delay-100">
+                        <p class="text-var-secondary italic mb-4">"Sandusha's creativity and attention to detail are unmatched. DesignVerse delivered a stunning logo that perfectly captured our brand essence. Highly recommended!"</p>
+                        <p class="font-semibold text-var-primary">- Client A, Tech Startup</p>
+                    </div>
+                    <div class="bg-var-card p-8 rounded-xl shadow-lg-var border border-var-card hidden-on-load animate-fade-in-up animate-delay-200">
+                        <p class="text-var-secondary italic mb-4">"The advertising posters created by DesignVerse significantly boosted our campaign's visibility. Professional, timely, and truly impactful designs."</p>
+                        <p class="font-semibold text-var-primary">- Client B, Retail Business</p>
+                    </div>
+                    <div class="bg-var-card p-8 rounded-xl shadow-lg-var border border-var-card hidden-on-load animate-fade-in-up animate-delay-300">
+                        <p class="text-var-secondary italic mb-4">"From concept to final delivery, Sandusha was a pleasure to work with. Our new book cover is absolutely beautiful and has received so many compliments."</p>
+                        <p class="font-semibold text-var-primary">- Client C, Author</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="bg-var-section-alt px-4 py-16 sm:py-24 rounded-t-3xl shadow-inner">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12 text-var-primary hidden-on-load animate-fade-in-up">My Creative Portfolio</h2>
+
+                <div class="flex flex-wrap justify-center gap-3 mb-12 hidden-on-load animate-fade-in animate-delay-100">
+                    <button class="filter-btn bg-var-primary text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-var-accent transition-colors duration-300 btn-hover-effect active:bg-var-accent" data-filter="all">All Work</button>
+                    <button class="filter-btn bg-var-card text-var-secondary border border-var-primary px-6 py-2 rounded-full text-sm font-medium hover:bg-var-primary hover:text-white transition-colors duration-300 btn-hover-effect" data-filter="logos">Logos</button>
+                    <button class="filter-btn bg-var-card text-var-secondary border border-var-primary px-6 py-2 rounded-full text-sm font-medium hover:bg-var-primary hover:text-white transition-colors duration-300 btn-hover-effect" data-filter="banners">Banners</button>
+                    <button class="filter-btn bg-var-card text-var-secondary border border-var-primary px-6 py-2 rounded-full text-sm font-medium hover:bg-var-primary hover:text-white transition-colors duration-300 btn-hover-effect" data-filter="handbills">Handbills</button>
+                    <button class="filter-btn bg-var-card text-var-secondary border border-var-primary px-6 py-2 rounded-full text-sm font-medium hover:bg-var-primary hover:text-white transition-colors duration-300 btn-hover-effect" data-filter="cards">Selling Post</button>
+                    <button class="filter-btn bg-var-card text-var-secondary border border-var-primary px-6 py-2 rounded-full text-sm font-medium hover:bg-var-primary hover:text-white transition-colors duration-300 btn-hover-effect" data-filter="books">T-Shirt</button>
+                    <button class="filter-btn bg-var-card text-var-secondary border border-var-primary px-6 py-2 rounded-full text-sm font-medium hover:bg-var-primary hover:text-white transition-colors duration-300 btn-hover-effect" data-filter="flyer">Class Flyer</button>
+                </div>
+
+                <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Logos Category (3 items) -->
+                    <div class="portfolio-item logos all bg-var-card rounded-xl shadow-lg-var overflow-hidden project-card hidden-on-load animate-fade-in-up animate-delay-200">
+                        <img src="Images/YT thubnail/yt with ama 01.jpg" alt="Logo Design 1" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-var-main">Brand Identity for "EcoGrow"</h3>
+                            <p class="text-var-primary text-sm font-medium">Logos, Brand Identity</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item logos all bg-var-card rounded-xl shadow-lg-var overflow-hidden project-card hidden-on-load animate-fade-in-up animate-delay-250">
+                        <img src="Images/YT thubnail/yt with ama 02.jpg" alt="Logo Design 2" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-var-main">Logo Design for "Urban Cafe"</h3>
+                            <p class="text-var-primary text-sm font-medium">Logos, Brand Identity</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item logos all bg-var-card rounded-xl shadow-lg-var overflow-hidden project-card hidden-on-load animate-fade-in-up animate-delay-275">
+                        <img src="Images/YT thubnail/thubn3.jpg" alt="Logo Design 3" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-var-main">Tech Startup Logo</h3>
+                            <p class="text-var-primary text-sm font-medium">Logos, Brand Identity</p>
+                        </div>
+                    </div>
+
+                    <!-- Banners Category (3 items) -->
+                    <div class="portfolio-item banners all bg-var-card rounded-xl shadow-lg-var overflow-hidden project-card hidden-on-load animate-fade-in-up animate-delay-300">
+                        <img src="Images/Bannar/posterdesign1.jpg" alt="Poster Design 1" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-var-main">Concert Promotion Poster</h3>
+                            <p class="text-var-primary text-sm font-medium">Advertising Posters</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item banners all bg-var-card rounded-xl shadow-lg-var overflow-hidden project-card hidden-on-load animate-fade-in-up animate-delay-350">
+                        <img src="Images/Bannar/posterdesign2.jpg" alt="Website Banner 2" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-var-main">E-commerce Website Banner</h3>
+                            <p class="text-var-primary text-sm font-medium">Banners, Digital Graphics</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item banners all bg-var-card rounded-xl shadow-lg-var overflow-hidden project-card hidden-on-load animate-fade-in-up animate-delay-375">
+                        <img src="Images/Bannar/posterdesign3.jpg" alt="Event Banner 3" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-var-main">Outdoor Event Banner</h3>
+                            <p class="text-var-primary text-sm font-medium">Banners, Advertising</p>
+                        </div>
+                    </div>
+
+                    <!-- T-Shirt Category (3 items) -->
+                    <div class="portfolio-item books all bg-var-card rounded-xl shadow-lg-var overflow-hidden project-card hidden-on-load animate-fade-in-up animate-delay-400">
+                        <img src="Images/Tshirt/Tshirt1.jpg" alt="T-Shirt Design 1" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-var-main">Custom T-Shirt Design</h3>
+                            <p class="text-var-primary text-sm font-medium">T-Shirt, Apparel</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item books all bg-var-card rounded-xl shadow-lg-var overflow-hidden project-card hidden-on-load animate-fade-in-up animate-delay-450">
+                        <img src="Images/Tshirt/tshirt2.jpg" alt="T-Shirt Design 2" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-var-main">Event T-Shirt Design</h3>
+                            <p class="text-var-primary text-sm font-medium">T-Shirt, Event Merchandise</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item books all bg-var-card rounded-xl shadow-lg-var overflow-hidden project-card hidden-on-load animate-fade-in-up animate-delay-475">
+                        <img src="Images/Tshirt/Tshirt3.jpg" alt="T-Shirt Design 3" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-var-main">Band Merchandise T-Shirt</h3>
+                            <p class="text-var-primary text-sm font-medium">T-Shirt, Music</p>
+                        </div>
+                    </div>
+
+                    <!-- Handbills Category (3 items) -->
+                    <div class="portfolio-item handbills all bg-var-card rounded-xl shadow-lg-var overflow-hidden project-card hidden-on-load animate-fade-in-up animate-delay-500">
+                        <img src="Images/Handbill/handbill1.jpg" alt="Handbill Design 1" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-var-main">Cafe Promotion Handbill</h3>
+                            <p class="text-var-primary text-sm font-medium">Handbills, Print Design</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item handbills all bg-var-card rounded-xl shadow-lg-var overflow-hidden project-card hidden-on-load animate-fade-in-up animate-delay-550">
+                        <img src="Images/Handbill/handbill2.jpg" alt="Handbill Design 2" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-var-main">Real Estate Open House Handbill</h3>
+                            <p class="text-var-primary text-sm font-medium">Handbills, Print Design</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item handbills all bg-var-card rounded-xl shadow-lg-var overflow-hidden project-card hidden-on-load animate-fade-in-up animate-delay-575">
+                        <img src="Images/Handbill/handbill3.jpg" alt="Handbill Design 3" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-var-main">Restaurant Takeaway Menu Handbill</h3>
+                            <p class="text-var-primary text-sm font-medium">Handbills, Menu Design</p>
+                        </div>
+                    </div>
+
+                    <!-- Selling Post Category (3 items) -->
+                    <div class="portfolio-item cards all bg-var-card rounded-xl shadow-lg-var overflow-hidden project-card hidden-on-load animate-fade-in-up animate-delay-600">
+                        <img src="Images/Sell/sell1.jpg" alt="Selling Post 1" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-var-main">Social Media Selling Post</h3>
+                            <p class="text-var-primary text-sm font-medium">Selling Post, Digital Graphics</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item cards all bg-var-card rounded-xl shadow-lg-var overflow-hidden project-card hidden-on-load animate-fade-in-up animate-delay-650">
+                        <img src="Images/Sell/sell2.jpg" alt="Selling Post 2" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-var-main">Seasonal Sale Promotion</h3>
+                            <p class="text-var-primary text-sm font-medium">Selling Post, Advertising</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item cards all bg-var-card rounded-xl shadow-lg-var overflow-hidden project-card hidden-on-load animate-fade-in-up animate-delay-675">
+                        <img src="Images/Sell/sell3.jpg" alt="Selling Post 3" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-var-main">New Product Launch Post</h3>
+                            <p class="text-var-primary text-sm font-medium">Selling Post, Marketing</p>
+                        </div>
+                    </div>
+
+                    <!-- Class Flyer Category (3 items) -->
+                    <div class="portfolio-item flyer all bg-var-card rounded-xl shadow-lg-var overflow-hidden project-card hidden-on-load animate-fade-in-up animate-delay-700">
+                        <img src="Images/Class/ama english bannar sahasthra.jpg" alt="Class Flyer 1" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-var-main">Yoga Class Promotion Flyer</h3>
+                            <p class="text-var-primary text-sm font-medium">Class Flyer, Print Design</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item flyer all bg-var-card rounded-xl shadow-lg-var overflow-hidden project-card hidden-on-load animate-fade-in-up animate-delay-750">
+                        <img src="Images/Class/Heshan ICT.jpg" alt="Class Flyer 2" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-var-main">Music Workshop Flyer</h3>
+                            <p class="text-var-primary text-sm font-medium">Class Flyer, Event Promotion</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item flyer all bg-var-card rounded-xl shadow-lg-var overflow-hidden project-card hidden-on-load animate-fade-in-up animate-delay-775">
+                        <img src="Images/Class/Dewni Masha History Bannar.jpg" alt="Class Flyer 3" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-var-main">Art Class Enrollment Flyer</h3>
+                            <p class="text-var-primary text-sm font-medium">Class Flyer, Education</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="container mx-auto px-4 py-16 sm:py-24">
+            <h2 class="text-4xl font-bold text-center mb-12 text-var-primary hidden-on-load animate-fade-in-up">Our Design Services</h2>
+            <p class="text-center text-lg text-var-secondary mb-16 max-w-3xl mx-auto hidden-on-load animate-fade-in-up animate-delay-100">
+                At DesignVerse, we offer a comprehensive suite of graphic design services to meet all your visual communication needs.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <div class="bg-var-card p-8 rounded-xl shadow-lg-var border border-var-card text-center service-card hidden-on-load animate-fade-in-up animate-delay-200">
+                    <div class="text-var-primary text-5xl mb-6"><i class="fas fa-lightbulb"></i></div>
+                    <h3 class="text-2xl font-semibold mb-4 text-var-main">Brand Identity & Logo Design</h3>
+                    <p class="text-var-secondary leading-relaxed">
+                        Crafting unique and memorable brand marks that truly represent your business and resonate with your audience.
+                    </p>
+                </div>
+                <div class="bg-var-card p-8 rounded-xl shadow-lg-var border border-var-card text-center service-card hidden-on-load animate-fade-in-up animate-delay-300">
+                    <div class="text-var-primary text-5xl mb-6"><i class="fas fa-print"></i></div>
+                    <h3 class="text-2xl font-semibold mb-4 text-var-main">Print Design Solutions</h3>
+                    <p class="text-var-secondary leading-relaxed">
+                        From eye-catching banners and handbills to professional visiting cards and brochures, we cover all your print media needs.
+                    </p>
+                </div>
+                <div class="bg-var-card p-8 rounded-xl shadow-lg-var border border-var-card text-center service-card hidden-on-load animate-fade-in-up animate-delay-400">
+                    <div class="text-var-primary text-5xl mb-6"><i class="fas fa-book-open"></i></div>
+                    <h3 class="text-2xl font-semibold mb-4 text-var-main">Publication Design</h3>
+                    <p class="text-var-secondary leading-relaxed">
+                        Stunning book covers, captivating magazine layouts, and professional report designs that engage readers.
+                    </p>
+                </div>
+                <div class="bg-var-card p-8 rounded-xl shadow-lg-var border border-var-card text-center service-card hidden-on-load animate-fade-in-up animate-delay-500">
+                    <div class="text-var-primary text-5xl mb-6"><i class="fas fa-bullhorn"></i></div>
+                    <h3 class="text-2xl font-semibold mb-4 text-var-main">Advertising & Marketing Collateral</h3>
+                    <p class="text-var-secondary leading-relaxed">
+                        Impactful advertising posters and compelling digital graphics designed to boost your campaigns.
+                    </p>
+                </div>
+                <div class="bg-var-card p-8 rounded-xl shadow-lg-var border border-var-card text-center service-card hidden-on-load animate-fade-in-up animate-delay-600">
+                    <div class="text-var-primary text-5xl mb-6"><i class="fas fa-palette"></i></div>
+                    <h3 class="text-2xl font-semibold mb-4 text-var-main">Custom Illustrations</h3>
+                    <p class="text-var-secondary leading-relaxed">
+                        Unique and bespoke illustrations to add a distinctive touch to your projects and brand.
+                    </p>
+                </div>
+                <div class="bg-var-card p-8 rounded-xl shadow-lg-var border border-var-card text-center service-card hidden-on-load animate-fade-in-up animate-delay-700">
+                    <div class="text-var-primary text-5xl mb-6"><i class="fas fa-bezier-curve"></i></div>
+                    <h3 class="text-2xl font-semibold mb-4 text-var-main">Vector Graphics</h3>
+                    <p class="text-var-secondary leading-relaxed">
+                        Scalable and versatile vector artwork for any application, from web to large-format printing.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-var-primary text-white p-12 rounded-3xl shadow-xl-var mb-16 hidden-on-load animate-fade-in-up animate-delay-800">
+                <h3 class="text-3xl font-semibold text-center mb-8">The Design Process at DesignVerse</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <div class="flex flex-col items-center hidden-on-load animate-fade-in-up animate-delay-900">
+                        <div class="bg-var-accent text-var-primary w-16 h-16 flex items-center justify-center rounded-full text-3xl font-bold mb-4 shadow-var">1</div>
+                        <h4 class="text-xl font-semibold mb-2">Consultation & Brief</h4>
+                        <p class="text-gray-200 text-sm">We start by understanding your vision, goals, and target audience.</p>
+                    </div>
+                    <div class="flex flex-col items-center hidden-on-load animate-fade-in-up animate-delay-1000">
+                        <div class="bg-var-accent text-var-primary w-16 h-16 flex items-center justify-center rounded-full text-3xl font-bold mb-4 shadow-var">2</div>
+                        <h4 class="text-xl font-semibold mb-2">Concept Development</h4>
+                        <p class="text-gray-200 text-sm">Brainstorming and sketching initial ideas, presenting diverse concepts.</p>
+                    </div>
+                    <div class="flex flex-col items-center hidden-on-load animate-fade-in-up animate-delay-1100">
+                        <div class="bg-var-accent text-var-primary w-16 h-16 flex items-center justify-center rounded-full text-3xl font-bold mb-4 shadow-var">3</div>
+                        <h4 class="text-xl font-semibold mb-2">Refinement & Revisions</h4>
+                        <p class="text-gray-200 text-sm">Collaborating on feedback to fine-tune the design until perfect.</p>
+                    </div>
+                    <div class="flex flex-col items-center hidden-on-load animate-fade-in-up animate-delay-1200">
+                        <div class="bg-var-accent text-var-primary w-16 h-16 flex items-center justify-center rounded-full text-3xl font-bold mb-4 shadow-var">4</div>
+                        <h4 class="text-xl font-semibold mb-2">Final Delivery</h4>
+                        <p class="text-gray-200 text-sm">Delivering high-quality, print-ready or digital files on time.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <h3 class="text-3xl font-semibold mb-6 text-var-main hidden-on-load animate-fade-in-up">Why Partner with DesignVerse?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="flex items-start bg-var-card p-6 rounded-xl shadow-var border border-var-card hidden-on-load animate-fade-in-up animate-delay-100">
+                        <i class="fas fa-check-circle text-var-primary text-3xl mr-4 mt-1"></i>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2 text-var-main">Client-Centric Approach</h4>
+                            <p class="text-var-secondary">Your vision is our priority. We listen, understand, and deliver designs that exceed expectations.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start bg-var-card p-6 rounded-xl shadow-var border border-var-card hidden-on-load animate-fade-in-up animate-delay-200">
+                        <i class="fas fa-check-circle text-var-primary text-3xl mr-4 mt-1"></i>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2 text-var-main">Unmatched Creativity</h4>
+                            <p class="text-var-secondary">Bringing fresh, innovative ideas to every project, ensuring your brand stands out.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start bg-var-card p-6 rounded-xl shadow-var border border-var-card hidden-on-load animate-fade-in-up animate-delay-300">
+                        <i class="fas fa-check-circle text-var-primary text-3xl mr-4 mt-1"></i>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2 text-var-main">Timely & Professional Delivery</h4>
+                            <p class="text-var-secondary">Committed to delivering high-quality work efficiently and on schedule.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start bg-var-card p-6 rounded-xl shadow-var border border-var-card hidden-on-load animate-fade-in-up animate-delay-400">
+                        <i class="fas fa-check-circle text-var-primary text-3xl mr-4 mt-1"></i>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2 text-var-main">Expert Software Proficiency</h4>
+                            <p class="text-var-secondary">Mastery in Photoshop, Illustrator, CorelDRAW, and other industry-standard tools.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="bg-var-primary text-white px-4 py-16 sm:py-24 rounded-t-3xl shadow-xl-var">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12 hidden-on-load animate-fade-in-up">Get in Touch with DesignVerse</h2>
+                <p class="text-center text-lg opacity-90 mb-16 max-w-3xl mx-auto hidden-on-load animate-fade-in-up animate-delay-100">
+                    Ready to transform your vision into stunning designs? Contact us today for a free consultation or to discuss your next project.
+                </p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="bg-var-card p-8 rounded-xl shadow-lg-var text-var-main hidden-on-load animate-fade-in-up animate-delay-200">
+                        <h3 class="text-2xl font-semibold mb-6 text-var-primary">Send Us a Message</h3>
+                        <form action="#" method="POST" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-var-secondary mb-2">Your Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-var-card focus:ring-var-primary focus:border-var-primary transition duration-200" placeholder="John Doe" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-var-secondary mb-2">Your Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-var-card focus:ring-var-primary focus:border-var-primary transition duration-200" placeholder="john.doe@example.com" required>
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-var-secondary mb-2">Subject</label>
+                                <input type="text" id="subject" name="subject" class="w-full px-4 py-3 rounded-lg border border-var-card focus:ring-var-primary focus:border-var-primary transition duration-200" placeholder="Project Inquiry / Collaboration" required>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-var-secondary mb-2">Your Message</label>
+                                <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-var-card focus:ring-var-primary focus:border-var-primary transition duration-200" placeholder="Tell us about your design needs..." required></textarea>
+                            </div>
+                            <div class="flex justify-end">
+                                <button type="submit" class="bg-var-primary text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-var-accent transition-all duration-300 btn-hover-effect shadow-var">
+                                    Send Message <i class="fas fa-paper-plane ml-2"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="flex flex-col justify-center items-center lg:items-start text-center lg:text-left space-y-8">
+                        <div class="flex items-center space-x-4 hidden-on-load animate-fade-in-up animate-delay-300">
+                            <div class="bg-var-accent text-var-primary w-14 h-14 flex items-center justify-center rounded-full text-2xl shadow-var">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold">Email Us</h3>
+                                <p class="text-lg opacity-90"><a href="mailto:info@designverse.lk" class="hover:underline">mrsanduwa.bzn@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 hidden-on-load animate-fade-in-up animate-delay-400">
+                            <div class="bg-var-accent text-var-primary w-14 h-14 flex items-center justify-center rounded-full text-2xl shadow-var">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold">Call Us</h3>
+                                <p class="text-lg opacity-90"><a href="tel:+94771234567" class="hover:underline">+94768665792</a></p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 hidden-on-load animate-fade-in-up animate-delay-500">
+                            <div class="bg-var-accent text-var-primary w-14 h-14 flex items-center justify-center rounded-full text-2xl shadow-var">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold">WhatsApp</h3>
+                                <p class="text-lg opacity-90"><a href="https://wa.me/767895962" target="_blank" class="hover:underline">+94767895962</a></p>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-8 border-t border-blue-700 w-full text-center lg:text-left hidden-on-load animate-fade-in-up animate-delay-600">
+                            <h3 class="text-xl font-semibold mb-4">Connect with Us</h3>
+                            <div class="flex justify-center lg:justify-start space-x-6 text-3xl">
+                                <a href="https://www.facebook.com/share/1ApyFHN3mH/?mibextid=wwXIfr" target="_blank" class="text-white hover:text-var-accent transition-colors duration-300 social-icon-hover" title="Facebook Profile"><i class="fab fa-facebook"></i></a>
+                                <a href="https://www.facebook.com/share/12LaqS2XGD6/?mibextid=wwXIfr" target="_blank" class="text-white hover:text-var-accent transition-colors duration-300 social-icon-hover" title="Facebook Page"><i class="fab fa-facebook-square"></i></a>
+                                <a href="https://wa.me/+94768665792" target="_blank" class="text-white hover:text-var-accent transition-colors duration-300 social-icon-hover" title="WhatsApp Personal"><i class="fab fa-whatsapp"></i></a>
+                                <a href="https://wa.me/+94767895962" target="_blank" class="text-white hover:text-var-accent transition-colors duration-300 social-icon-hover" title="WhatsApp Business"><i class="fab fa-whatsapp-square"></i></a>
+                                <a href="https://www.instagram.com/mr_sandu_wa?igsh=MTVuZ3ppemM4bGV0eQ%3D%3D&utm_source=qr" target="_blank" class="text-white hover:text-var-accent transition-colors duration-300 social-icon-hover" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.tiktok.com/@mr_sanduwa?_r=1&_d=ed981d3b9g0k5l&sec_uid=MS4wLjABAAAAo-sOJ7B8Yqfyvw-_6dauXOCw5nNDOo58-pGx1_ksI7f-Z8A7pEBypBpDjIpcPwnl&share_author_id=6654063421450960898&sharer_language=en&source=h5_m&u_code=d4ee73jkjglcgi&ug_btm=b8727,b0&social_share_type=4&utm_source=copy&sec_user_id=MS4wLjABAAAAo-sOJ7B8Yqfyvw-_6dauXOCw5nNDOo58-pGx1_ksI7f-Z8A7pEBypBpDjIpcPwnl&tt_from=copy&utm_medium=ios&utm_campaign=client_share&enable_checksum=1&user_id=6654063421450960898&share_link_id=5FFE9A90-0349-4EF4-BB9C-B87E033AD9E3&share_app_id=1233" target="_blank" class="text-white hover:text-var-accent transition-colors duration-300 social-icon-hover" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                                <a href="https://twitter.com/yourxprofile" target="_blank" class="text-white hover:text-var-accent transition-colors duration-300 social-icon-hover" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                                <a href="https://threads.net/@yourthreads" target="_blank" class="text-white hover:text-var-accent transition-colors duration-300 social-icon-hover" title="Threads"><i class="fab fa-threads"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-var-footer text-var-footer py-8 rounded-t-xl">
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p>&copy; 2025 DesignVerse by Sandusha Avishkha. All rights reserved.</p>
+            <p class="mt-2">Crafted with passion in Minuwangoda, Sri Lanka.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Portfolio filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('bg-var-primary', 'text-white', 'active:bg-var-accent');
+                    btn.classList.add('bg-var-card', 'text-var-secondary', 'border-var-primary');
+                });
+
+                // Add active class to clicked button
+                button.classList.remove('bg-var-card', 'text-var-secondary', 'border-var-primary');
+                button.classList.add('bg-var-primary', 'text-white', 'active:bg-var-accent');
+
+
+                const filter = button.dataset.filter;
+
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block'; // Show item
+                    } else {
+                        item.style.display = 'none'; // Hide item
+                    }
+                });
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null, // viewport
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Element is in view, add the animation class
+                    const element = entry.target;
+                    // Check for specific animation classes and apply
+                    if (element.classList.contains('animate-fade-in-up')) {
+                        element.style.animationName = 'fadeInFromBottom';
+                    } else if (element.classList.contains('animate-fade-in')) {
+                        element.style.animationName = 'fadeIn';
+                    } else if (element.classList.contains('animate-scale-in')) {
+                        element.style.animationName = 'scaleIn';
+                    } else if (element.classList.contains('animate-fade-in-scale')) {
+                        element.style.animationName = 'fadeInScale';
+                    }
+
+                    // Remove hidden-on-load and apply delay
+                    element.classList.remove('hidden-on-load');
+                    // Staggered animation delay is handled by CSS classes already
+                    // No need to set animation-delay property directly here if it's already in CSS
+
+                    observer.unobserve(element); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements that should animate on scroll
+        document.querySelectorAll('.hidden-on-load').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Initial animation for elements in the hero section (already visible)
+        document.querySelectorAll('#hero .animate-fade-in-up, #hero .animate-fade-in, #hero .animate-scale-in').forEach(element => {
+            // Remove hidden-on-load if it was mistakenly applied to hero elements
+            element.classList.remove('hidden-on-load');
+            // Ensure animation starts immediately for hero elements
+            if (element.classList.contains('animate-fade-in-up')) {
+                element.style.animationName = 'fadeInFromBottom';
+            } else if (element.classList.contains('animate-fade-in')) {
+                element.style.animationName = 'fadeIn';
+            } else if (element.classList.contains('animate-scale-in')) {
+                element.style.animationName = 'scaleIn';
+            }
+        });
+
+        // Dark/Light Mode Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const lightModeIcon = document.getElementById('light-mode-icon');
+        const darkModeIcon = document.getElementById('dark-mode-icon');
+
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        const mobileLightModeIcon = document.getElementById('mobile-light-mode-icon');
+        const mobileDarkModeIcon = document.getElementById('mobile-dark-mode-icon');
+
+        // Function to set the theme
+        function setTheme(isDarkMode) {
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                lightModeIcon.classList.add('hidden');
+                darkModeIcon.classList.remove('hidden');
+                mobileLightModeIcon.classList.add('hidden');
+                mobileDarkModeIcon.classList.remove('hidden');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                lightModeIcon.classList.remove('hidden');
+                darkModeIcon.classList.add('hidden');
+                mobileLightModeIcon.classList.remove('hidden');
+                mobileDarkModeIcon.classList.add('hidden');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check for saved theme preference on load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            setTheme(true);
+        } else {
+            setTheme(false); // Default to light mode if no preference or 'light'
+        }
+
+        // Event listener for desktop theme toggle
+        themeToggle.addEventListener('click', () => {
+            setTheme(!document.body.classList.contains('dark-mode'));
+        });
+
+        // Event listener for mobile theme toggle
+        mobileThemeToggle.addEventListener('click', () => {
+            setTheme(!document.body.classList.contains('dark-mode'));
+        });
+
+    </script>
+</body>
+</html>
